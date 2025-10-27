@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:PasswordManager.Components"
+             x:Class="PasswordManager.Views.GeneratorPage"
+             Title="GeneratorPage">
+    <VerticalStackLayout
+        Margin="10" >
+
+        <Grid
+            ColumnDefinitions="*, Auto"
+            ColumnSpacing="10"
+            BackgroundColor="#222222" >
+
+            <Entry
+                x:Name="PasswordField"
+                Grid.Column="0"
+                Placeholder="Генератор паролей..."
+                Margin="5"
+                />
+            <Button
+                Grid.Column="1"
+                Text="0"
+                Margin="5"
+                Clicked="GeneratePassword" />
+        </Grid>
+        <Button 
+            Text="Скопировать"
+            Margin="5" />
+
+
+        <Grid
+            ColumnDefinitions="Auto, *, Auto"
+            ColumnSpacing="10" >
+            <Label
+                x:Name="LengthLabel"
+                Grid.Column="0"
+                Text="Длина" />
+            <Slider
+                x:Name="LengthField"
+                Grid.Column="1"
+                Minimum="4"
+                Maximum="128" 
+                Value="{Binding PasswordLength}"
+                ValueChanged="UpdateLength"
+                />
+        </Grid>
+
+        <Grid ColumnSpacing="10" 
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              ColumnDefinitions="*, Auto">
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="A-Z" />
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Text="a-z" />
+            <Label
+                Grid.Column="0"
+                Grid.Row="2"
+                Text="0-9" />
+            <Label
+                Grid.Column="0"
+                Grid.Row="3"
+                Text="!@#$%^&amp;*" />
+            <Label
+                Grid.Column="0"
+                Grid.Row="4"
+                Text="Избегать двухсмысленных символов" />
+
+            <CheckBox
+                x:Name="UpperCheckbox"
+                Grid.Column="1"
+                Grid.Row="0" 
+                CheckedChanged="GeneratePassword" />
+            <CheckBox
+                x:Name="LowerCheckbox"
+                Grid.Column="1"
+                Grid.Row="1"
+                CheckedChanged="GeneratePassword" />
+            <CheckBox
+                x:Name="NumCheckbox"
+                Grid.Column="1"
+                Grid.Row="2"
+                CheckedChanged="GeneratePassword" />
+            <CheckBox
+                x:Name="SpecialCheckbox"
+                Grid.Column="1"
+                Grid.Row="3"
+                CheckedChanged="GeneratePassword" />
+            <CheckBox
+                x:Name="AvoidAmbiguousCheckbox"
+                Grid.Column="1"
+                Grid.Row="4"
+                CheckedChanged="GeneratePassword" />
+        </Grid>
+
+        <Grid 
+            ColumnSpacing="10" 
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="*, Auto">
+
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Минимум цифр"/>
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Text="Минимум символов"/>
+            <components:NumericInput
+                x:Name="NumsCountInput"
+                Grid.Column="1"
+                Grid.Row="0"
+                Value="0"
+                MinValue="0"
+                MaxValue="128"
+                HorizontalOptions="Center"
+                Margin="0,20"
+                ValueChanged="GeneratePassword" />
+            <components:NumericInput
+                x:Name="SpecialCountInput"
+                Grid.Column="1"
+                Grid.Row="1"
+                Value="0"
+                MinValue="0"
+                MaxValue="128"
+                HorizontalOptions="Center"
+                Margin="0,20"
+                ValueChanged="GeneratePassword" />
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
