@@ -9,7 +9,12 @@ public partial class GeneratorPage : ContentPage
 	public GeneratorPage()
 	{
 		InitializeComponent();
-	}
+
+        LowerCheckbox.IsChecked = true;
+        UpperCheckbox.IsChecked = true;
+        NumCheckbox.IsChecked = true;
+        SpecialCheckbox.IsChecked = true;
+    }
 
 	public void UpdateLength(object? sender, EventArgs e)
 	{

@@ -1,4 +1,6 @@
-﻿namespace PasswordManager
+﻿using PasswordManager.Pages;
+
+namespace PasswordManager
 {
     public partial class App : Application
     {
@@ -9,7 +11,7 @@
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            return new Window(new LoginPage());
         }
     }
 }
